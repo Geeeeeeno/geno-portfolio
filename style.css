@@ -20,8 +20,9 @@
   --border-strong: rgba(255, 45, 149, 0.35);
   --glow-cyan: rgba(0, 229, 255, 0.35);
   --glow-magenta: rgba(255, 45, 149, 0.3);
-  --font: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", "YuGothic", sans-serif;
-  --font-display: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", sans-serif;
+  /* One full-coverage Japanese web font everywhere, so no glyph falls back to a different font/weight */
+  --font: "Noto Sans JP", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "YuGothic", "Meiryo", sans-serif;
+  --font-display: var(--font);
   --header-h: 4.25rem;
   --radius: 12px;
   --radius-sm: 8px;
@@ -369,10 +370,6 @@ main {
   line-height: 1.15;
 }
 
-.section-header h2 span {
-  font-weight: 300;
-  color: var(--text-muted);
-}
 
 .section-lead {
   margin-top: 0.85rem;
@@ -482,10 +479,6 @@ main {
   font-size: 1.02rem;
 }
 
-.hero-body strong {
-  color: var(--text);
-  font-weight: 600;
-}
 
 .hero-cta {
   display: flex;
@@ -591,10 +584,6 @@ main {
   margin-bottom: 1.1rem;
 }
 
-.about-body strong {
-  color: var(--text);
-  font-weight: 600;
-}
 
 .skills-list {
   display: flex;
