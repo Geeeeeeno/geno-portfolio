@@ -9,7 +9,7 @@
 - `index.html` — ページ本体
 - `style.css` — スタイル
 - `main.js` — アニメーション・ナビ・ライトボックス
-- `assets/` — 画像・favicon
+- `assets/` — 画像・favicon（Works のサムネイルは `assets/img/*-desktop.webp` / `*-mobile.webp`）
 
 ## ローカル確認
 
