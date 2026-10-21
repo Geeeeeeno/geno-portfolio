@@ -2,6 +2,11 @@
 
 ジーノのポートフォリオサイトです。採用・テクノロジー・クリエイティブを軸に、制作物とプロフィールをまとめています。
 
+## 公開URL
+
+- メイン: https://geno-portfolio-site.vercel.app/ （Vercel）
+- ミラー: https://geeeeeeno.github.io/geno-portfolio/ （GitHub Pages）、https://geno-portfolio.pages.dev/ （Cloudflare Pages）
+
 ## 構成
 
 静的サイト（HTML / CSS / JS）です。ビルドや外部 CDN・外部フォントは使いません。
