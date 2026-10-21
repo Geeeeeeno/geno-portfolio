@@ -262,6 +262,130 @@
     document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
   }
 
+  /* ---------- Works category filter ---------- */
+  const filterTrack = document.getElementById("works-filter");
+  const groupsWrap = document.getElementById("works-groups");
+  if (filterTrack && groupsWrap) {
+    const tabs = Array.from(filterTrack.querySelectorAll(".filter-tab"));
+    const groups = Array.from(groupsWrap.querySelectorAll(".work-group"));
+    const indicator = filterTrack.querySelector(".works-filter-indicator");
+    const status = document.getElementById("works-filter-status");
+    const catColor = {
+      all: "var(--cyan)",
+      real: "var(--gold)",
+      orica: "var(--magenta)",
+      game: "var(--cyan)",
+      ai: "#b18cff",
+      archive: "var(--text-muted)",
+    };
+    let current = "all";
+    let switchTimer = 0;
+
+    groups.forEach((g) => {
+      g.querySelectorAll(".work-group-head, .featured-card, .archive-card").forEach((el, i) => {
+        el.style.setProperty("--i", String(i));
+      });
+    });
+
+    function moveIndicator(tab, instant) {
+      if (!indicator || !tab) return;
+      if (instant) indicator.style.transition = "none";
+      filterTrack.style.setProperty("--ind-x", tab.offsetLeft + "px");
+      filterTrack.style.setProperty("--ind-w", tab.offsetWidth + "px");
+      filterTrack.style.setProperty("--ind-c", catColor[tab.dataset.filter] || "var(--cyan)");
+      filterTrack.classList.add("has-indicator");
+      if (instant) {
+        void indicator.offsetWidth;
+        indicator.style.transition = "";
+      }
+    }
+
+    function revealAll(group) {
+      group.querySelectorAll(".reveal").forEach((el) => el.classList.add("is-visible"));
+    }
+
+    function applyFilter(key, animate) {
+      groups.forEach((g) => {
+        const show = key === "all" || g.dataset.cat === key;
+        g.hidden = !show;
+        g.classList.remove("is-entering");
+        if (show && animate) {
+          revealAll(g);
+          void g.offsetWidth;
+          g.classList.add("is-entering");
+          clearTimeout(g._enterTimer);
+          // Drop the animation class afterwards so the 3D tilt (inline transform) works again
+          g._enterTimer = setTimeout(() => g.classList.remove("is-entering"), 1400);
+        }
+      });
+      if (status) {
+        const tab = tabs.find((t) => t.dataset.filter === key);
+        const label = tab ? tab.childNodes[0].textContent.trim() : "";
+        const count = tab ? tab.querySelector(".filter-count").textContent : "";
+        status.textContent = `${label}：${count}件を表示中`;
+      }
+    }
+
+    function selectTab(tab) {
+      const key = tab.dataset.filter;
+      if (key === current) return;
+      current = key;
+      tabs.forEach((t) => {
+        const on = t === tab;
+        t.classList.toggle("is-active", on);
+        t.setAttribute("aria-pressed", on ? "true" : "false");
+      });
+      moveIndicator(tab, false);
+      tab.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "nearest", inline: "center" });
+
+      const keepInView = () => {
+        const top = groupsWrap.getBoundingClientRect().top;
+        const offset = filterTrack.getBoundingClientRect().bottom + 16;
+        if (top < 0) {
+          window.scrollTo({ top: window.scrollY + top - offset, behavior: "auto" });
+        }
+      };
+
+      clearTimeout(switchTimer);
+      if (reduceMotion) {
+        applyFilter(key, false);
+        groups.forEach(revealAll);
+        keepInView();
+        return;
+      }
+      groupsWrap.classList.add("is-leaving");
+      switchTimer = setTimeout(() => {
+        groupsWrap.classList.remove("is-leaving");
+        applyFilter(key, true);
+        keepInView();
+      }, 200);
+    }
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => selectTab(tab));
+    });
+
+    const initial = tabs.find((t) => t.classList.contains("is-active")) || tabs[0];
+    moveIndicator(initial, true);
+    window.addEventListener("resize", () => {
+      moveIndicator(tabs.find((t) => t.dataset.filter === current), true);
+    });
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(() => moveIndicator(tabs.find((t) => t.dataset.filter === current), true));
+    }
+
+    // Optional deep link: ?works=orica or #works-orica
+    const params = new URLSearchParams(location.search);
+    const fromHash = (location.hash.match(/^#works-(\w+)$/) || [])[1];
+    const wanted = params.get("works") || fromHash;
+    const wantedTab = wanted && tabs.find((t) => t.dataset.filter === wanted);
+    if (wantedTab) {
+      current = "all";
+      selectTab(wantedTab);
+      moveIndicator(wantedTab, true);
+    }
+  }
+
   /* ---------- 3D tilt on featured cards ---------- */
   if (!reduceMotion && window.matchMedia("(pointer: fine)").matches) {
     document.querySelectorAll(".tilt-card").forEach((card) => {
