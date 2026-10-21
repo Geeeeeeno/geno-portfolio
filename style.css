@@ -830,6 +830,12 @@ main {
   border-color: rgba(240, 193, 75, 0.4);
 }
 
+.work-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
 .work-title {
   font-family: var(--font-display);
   font-weight: 700;
