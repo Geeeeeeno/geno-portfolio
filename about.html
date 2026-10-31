@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>自己紹介 — GENO / ジーノ</title>
+  <meta name="description" content="ジーノ（GENO）の自己紹介。遊戯王カードやオリカのWebアプリ、ブラウザゲーム、AIイラストを作っています。作品の一覧と更新日、使っている道具と技術をまとめました。">
+  <meta name="theme-color" content="#060814">
+  <link rel="canonical" href="https://geno-portfolio-site.vercel.app/about.html">
+  <meta property="og:site_name" content="GENO / ジーノ">
+  <meta property="og:title" content="自己紹介 — GENO / ジーノ">
+  <meta property="og:description" content="Webアプリ、ブラウザゲーム、AIイラストを作るジーノの自己紹介と、使っている道具・技術。">
+  <meta property="og:type" content="profile">
+  <meta property="og:url" content="https://geno-portfolio-site.vercel.app/about.html">
+  <meta property="og:image" content="https://geno-portfolio-site.vercel.app/assets/og/og-about.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="GENO / ジーノ 自己紹介 — 夜空とネオンのタイトル画像">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="自己紹介 — GENO / ジーノ">
+  <meta name="twitter:description" content="Webアプリ、ブラウザゲーム、AIイラストを作るジーノの自己紹介と、使っている道具・技術。">
+  <meta name="twitter:image" content="https://geno-portfolio-site.vercel.app/assets/og/og-about.png">
+  <meta name="twitter:image:alt" content="GENO / ジーノ 自己紹介 — 夜空とネオンのタイトル画像">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300..900&display=swap">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "url": "https://geno-portfolio-site.vercel.app/about.html",
+    "name": "自己紹介 — GENO / ジーノ",
+    "inLanguage": "ja",
+    "isPartOf": { "@id": "https://geno-portfolio-site.vercel.app/#website" },
+    "mainEntity": {
+      "@type": "Person",
+      "@id": "https://geno-portfolio-site.vercel.app/#person",
+      "name": "ジーノ",
+      "alternateName": "GENO",
+      "url": "https://geno-portfolio-site.vercel.app/about.html",
+      "description": "Webアプリ、ブラウザゲーム、AIイラストを作っているクリエイター。",
+      "knowsAbout": ["HTML", "CSS", "JavaScript", "Canvas", "Web Audio", "Vercel", "Cloudflare Pages", "ComfyUI"]
+    }
+  }
+  </script>
+</head>
+<body class="page-about">
+  <a class="skip-link" href="#main">メインコンテンツへ</a>
+
+  <canvas id="sky-canvas" aria-hidden="true"></canvas>
+  <div class="aurora" aria-hidden="true">
+    <div class="aurora-blob aurora-blob--1"></div>
+    <div class="aurora-blob aurora-blob--2"></div>
+    <div class="aurora-blob aurora-blob--3"></div>
+  </div>
+  <div id="cursor-glow" class="cursor-glow" aria-hidden="true"></div>
+
+  <header class="site-header" id="site-header">
+    <a href="./" class="logo" aria-label="GENO トップへ">
+      <svg class="logo-mark" viewBox="0 0 40 40" width="32" height="32" aria-hidden="true">
+        <circle cx="20" cy="20" r="15" fill="none" stroke="currentColor" stroke-width="1.5" class="logo-ring logo-ring--outer"/>
+        <circle cx="20" cy="20" r="8" fill="none" stroke="var(--magenta)" stroke-width="1.5" class="logo-ring logo-ring--inner"/>
+        <path d="M20 5v5M20 30v5M5 20h5M30 20h5" stroke="var(--gold)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="20" cy="20" r="2.5" fill="var(--gold)"/>
+      </svg>
+      <span class="logo-text">GE<span>N</span>O</span>
+    </a>
+
+
+    <nav class="nav-desktop" aria-label="メインナビゲーション">
+      <ul>
+        <li><a href="./#about">About</a></li>
+        <li><a href="./#works">Works</a></li>
+        <li><a href="./#gallery">Gallery</a></li>
+        <li><a href="about.html" class="is-active" aria-current="page">Profile</a></li>
+      </ul>
+    </nav>
+
+    <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="nav-mobile" aria-label="メニューを開く">
+      <svg class="menu-icon menu-icon--open" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+        <path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+      <svg class="menu-icon menu-icon--close" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+        <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </header>
+
+  <nav class="nav-mobile" id="nav-mobile" aria-label="モバイルナビゲーション" hidden>
+    <ul>
+      <li><a href="./#about">About</a></li>
+      <li><a href="./#works">Works</a></li>
+      <li><a href="./#gallery">Gallery</a></li>
+      <li><a href="about.html" class="is-active" aria-current="page">Profile</a></li>
+    </ul>
+  </nav>
+
+  <main id="main">
+    <section class="page-hero" aria-labelledby="page-title">
+      <div class="page-hero-text">
+        <p class="hero-eyebrow reveal-hero">Profile</p>
+        <h1 class="page-title reveal-hero" id="page-title">自己紹介</h1>
+        <p class="page-lead reveal-hero">ジーノ（GENO）です。Webアプリ、ブラウザゲーム、AIイラストを作っています。</p>
+      </div>
+      <div class="orbit reveal-hero" aria-hidden="true">
+        <svg viewBox="0 0 240 240" class="orbit-svg">
+          <defs>
+            <linearGradient id="orbit-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00e5ff"/><stop offset="1" stop-color="#ff2d95"/></linearGradient>
+          </defs>
+          <circle cx="120" cy="120" r="104" fill="none" stroke="rgba(0,229,255,0.18)" stroke-width="1"/>
+          <g class="orbit-ring orbit-ring--a"><circle cx="120" cy="120" r="86" fill="none" stroke="url(#orbit-g)" stroke-width="1.6" stroke-dasharray="6 10"/><circle cx="206" cy="120" r="5" fill="#00e5ff"/></g>
+          <g class="orbit-ring orbit-ring--b"><circle cx="120" cy="120" r="60" fill="none" stroke="#ff2d95" stroke-width="1.4" stroke-dasharray="2 8"/><circle cx="120" cy="60" r="4" fill="#ff2d95"/></g>
+          <g class="orbit-ring orbit-ring--c"><circle cx="120" cy="120" r="34" fill="none" stroke="#f0c14b" stroke-width="1.4"/><circle cx="86" cy="120" r="3" fill="#f0c14b"/></g>
+          <path d="M120 72v14M120 154v14M72 120h14M154 120h14" stroke="#f0c14b" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="120" cy="120" r="7" fill="#f0c14b"/>
+        </svg>
+      </div>
+    </section>
+
+    <section class="section profile-intro" aria-labelledby="about-who">
+      <div class="section-inner">
+        <header class="section-header reveal">
+          <p class="section-tag">Who</p>
+          <h2 id="about-who">ジーノについて</h2>
+        </header>
+        <div class="profile-body reveal">
+          <p>遊戯王カードを題材にしたWebアプリ、ブラウザで遊べるゲーム、ローカル環境で生成したAIイラストを作って、このサイトにまとめています。</p>
+          <p>本業では採用・営業のチームをまとめながら、空いた時間で個人制作を続けています。ゲームと自動化とコードが好きです。</p>
+          <p>作品はどれもブラウザでそのまま開けます。スマートフォンでも遊べるように作っています。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section profile-makes" aria-labelledby="about-makes">
+      <div class="section-inner">
+        <header class="section-header reveal">
+          <p class="section-tag">Makes</p>
+          <h2 id="about-makes">作っているもの</h2>
+        </header>
+        <div class="make-grid">
+          <a class="make-card reveal" data-cat="ygo" href="./?works=ygo#works">
+            <span class="make-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26"><rect x="7.5" y="3.5" width="11" height="15" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.4" transform="rotate(8 13 11)"/><rect x="4.5" y="5" width="11" height="15" rx="1.6" fill="var(--bg-card-solid)" stroke="currentColor" stroke-width="1.5"/><rect x="6.6" y="7.2" width="6.8" height="5.6" rx=".6" fill="none" stroke="currentColor" stroke-width="1.1"/></svg></span>
+            <span class="make-en">Web Apps</span>
+            <span class="make-title">Webアプリ</span>
+            <span class="make-text">遊戯王カードやオリカで遊ぶ非公式ファンメイドのアプリ。パック開封、9枚のシェア画像、オリカ作りなど。</span>
+          </a>
+          <a class="make-card reveal" data-cat="game" style="--delay:0.08s" href="./?works=game#works">
+            <span class="make-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26"><path d="M7.5 7h9a4.5 4.5 0 014.4 5.4l-.8 4a2.4 2.4 0 01-4.1 1.2L14 15.5h-4l-2 2.1a2.4 2.4 0 01-4.1-1.2l-.8-4A4.5 4.5 0 017.5 7z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M8 10v3.4M6.3 11.7h3.4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><circle cx="15.6" cy="10.6" r="1" fill="currentColor"/><circle cx="17.4" cy="12.6" r="1" fill="currentColor"/></svg></span>
+            <span class="make-en">Games</span>
+            <span class="make-title">ブラウザゲーム</span>
+            <span class="make-text">Balatro風のカードゲーム「ほしあめ夜市」と、タイムアタック迷路「ねこねこネオン迷路」。</span>
+          </a>
+          <a class="make-card reveal" data-cat="ai" style="--delay:0.16s" href="./#gallery">
+            <span class="make-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26"><rect x="3.5" y="4.5" width="17" height="15" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M3.8 16.5l4.7-4.7 3.5 3.5 2.6-2.6 5.6 5.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M15.5 6.8l.8 1.7 1.7.8-1.7.8-.8 1.7-.8-1.7-1.7-.8 1.7-.8z" fill="currentColor"/></svg></span>
+            <span class="make-en">AI Illustration</span>
+            <span class="make-title">AIイラスト</span>
+            <span class="make-text">ComfyUIとAnimagine XL 4.0で生成したイラスト。トップのギャラリーで拡大して見られます。</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section profile-works" aria-labelledby="about-works">
+      <div class="section-inner">
+        <header class="section-header reveal">
+          <p class="section-tag">Works</p>
+          <h2 id="about-works">作品と更新日</h2>
+          <p class="section-lead">公開中の作品です。新しく更新したものにはNEWの印がつきます。</p>
+        </header>
+        <ul class="work-rows">
+          <li class="work-row reveal" style="--delay:0.00s">
+            <a class="work-row-link" href="https://orica-pack.vercel.app/" target="_blank" rel="noopener">
+              <span class="work-row-cat" data-cat="ygo">遊戯王</span>
+              <span class="work-row-title">パック開封</span>
+              <span class="work-row-date" data-work-date="orica-pack"></span>
+              <span class="work-row-arrow" aria-hidden="true"><svg viewBox="0 0 20 20" width="14" height="14" aria-hidden="true"><path d="M11 3h6v6M17 3l-8 8M14 12v4a1 1 0 01-1 1H4a1 1 0 01-1-1V7a1 1 0 011-1h4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </a>
+          </li>
+          <li class="work-row reveal" style="--delay:0.05s">
+            <a class="work-row-link" href="https://orica-real9.vercel.app/" target="_blank" rel="noopener">
+              <span class="work-row-cat" data-cat="ygo">遊戯王</span>
+              <span class="work-row-title">本物カードで9枚</span>
+              <span class="work-row-date" data-work-date="orica-real9"></span>
+              <span class="work-row-arrow" aria-hidden="true"><svg viewBox="0 0 20 20" width="14" height="14" aria-hidden="true"><path d="M11 3h6v6M17 3l-8 8M14 12v4a1 1 0 01-1 1H4a1 1 0 01-1-1V7a1 1 0 011-1h4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </a>
+          </li>
+          <li class="work-row reveal" style="--delay:0.10s">
+            <a class="work-row-link" href="https://orica-maker.vercel.app/" target="_blank" rel="noopener">
+              <span class="work-row-cat" data-cat="orica">オリカ</span>
+              <span class="work-row-title">オリカメーカー</span>
+              <span class="work-row-date" data-work-date="orica-maker"></span>
+              <span class="work-row-arrow" aria-hidden="true"><svg viewBox="0 0 20 20" width="14" height="14" aria-hidden="true"><path d="M11 3h6v6M17 3l-8 8M14 12v4a1 1 0 01-1 1H4a1 1 0 01-1-1V7a1 1 0 011-1h4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </a>
+          </li>
+          <li class="work-row reveal" style="--delay:0.15s">
+            <a class="work-row-link" href="https://orica-9.vercel.app/" target="_blank" rel="noopener">
+              <span class="work-row-cat" data-cat="orica">オリカ</span>
+              <span class="work-row-title">私を構成する9枚（オリカ）</span>
+              <span class="work-row-date" data-work-date="orica-9"></span>
+              <span class="work-row-arrow" aria-hidden="true"><svg viewBox="0 0 20 20" width="14" height="14" aria-hidden="true"><path d="M11 3h6v6M17 3l-8 8M14 12v4a1 1 0 01-1 1H4a1 1 0 01-1-1V7a1 1 0 011-1h4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </a>
+          </li>
+          <li class="work-row reveal" style="--delay:0.20s">
+            <a class="work-row-link" href="https://hoshiame-yoichi.vercel.app/" target="_blank" rel="noopener">
+              <span class="work-row-cat" data-cat="game">ゲーム</span>
+              <span class="work-row-title">ほしあめ夜市</span>
+              <span class="work-row-date" data-work-date="hoshiame"></span>
+              <span class="work-row-arrow" aria-hidden="true"><svg viewBox="0 0 20 20" width="14" height="14" aria-hidden="true"><path d="M11 3h6v6M17 3l-8 8M14 12v4a1 1 0 01-1 1H4a1 1 0 01-1-1V7a1 1 0 011-1h4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </a>
+          </li>
+          <li class="work-row reveal" style="--delay:0.25s">
+            <a class="work-row-link" href="https://maze-time-attack.vercel.app/" target="_blank" rel="noopener">
+              <span class="work-row-cat" data-cat="game">ゲーム</span>
+              <span class="work-row-title">ねこねこネオン迷路</span>
+              <span class="work-row-date" data-work-date="maze"></span>
+              <span class="work-row-arrow" aria-hidden="true"><svg viewBox="0 0 20 20" width="14" height="14" aria-hidden="true"><path d="M11 3h6v6M17 3l-8 8M14 12v4a1 1 0 01-1 1H4a1 1 0 01-1-1V7a1 1 0 011-1h4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </a>
+          </li>
+          <li class="work-row reveal" style="--delay:0.30s">
+            <a class="work-row-link" href="./#gallery">
+              <span class="work-row-cat" data-cat="ai">AIイラスト</span>
+              <span class="work-row-title">AIイラスト ギャラリー</span>
+              <span class="work-row-date" data-work-date="ai-gallery"></span>
+              <span class="work-row-arrow" aria-hidden="true"><svg viewBox="0 0 20 20" width="14" height="14" aria-hidden="true"><path d="M11 3h6v6M17 3l-8 8M14 12v4a1 1 0 01-1 1H4a1 1 0 01-1-1V7a1 1 0 011-1h4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section profile-tools" aria-labelledby="about-tools">
+      <div class="section-inner">
+        <header class="section-header reveal">
+          <p class="section-tag">Tools</p>
+          <h2 id="about-tools">使っている道具と技術</h2>
+          <p class="section-lead">作品とこのサイトで実際に使っているものです。このサイトはビルドなしのHTML・CSS・JavaScriptだけでできています。</p>
+        </header>
+        <div class="tool-grid">
+          <article class="tool-group reveal" style="--delay:0.00s">
+            <header class="tool-group-head">
+              <span class="tool-group-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M8 6L3 12l5 6M16 6l5 6-5 6M13.5 4l-3 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <div>
+                <p class="tool-group-en">Build</p>
+                <h3 class="tool-group-title">作る</h3>
+              </div>
+            </header>
+            <ul class="tool-list">
+              <li class="tool-chip"><span class="tool-name">HTML / CSS / JavaScript</span><span class="tool-note">このサイトとゲーム・Webアプリ</span></li>
+              <li class="tool-chip"><span class="tool-name">Canvas</span><span class="tool-note">ゲームの描画</span></li>
+              <li class="tool-chip"><span class="tool-name">Web Audio</span><span class="tool-note">ゲームの音</span></li>
+              <li class="tool-chip"><span class="tool-name">React</span><span class="tool-note">過去作のBalatro Joker DB</span></li>
+            </ul>
+          </article>
+          <article class="tool-group reveal" style="--delay:0.08s">
+            <header class="tool-group-head">
+              <span class="tool-group-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 3l7 4v10l-7 4-7-4V7z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M5 7l7 4 7-4M12 11v10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              <div>
+                <p class="tool-group-en">Ship</p>
+                <h3 class="tool-group-title">公開する</h3>
+              </div>
+            </header>
+            <ul class="tool-list">
+              <li class="tool-chip"><span class="tool-name">Vercel</span><span class="tool-note">作品とこのサイトのメイン公開先</span></li>
+              <li class="tool-chip"><span class="tool-name">Cloudflare Pages</span><span class="tool-note">このサイトのミラー</span></li>
+              <li class="tool-chip"><span class="tool-name">GitHub Pages</span><span class="tool-note">このサイトのミラー</span></li>
+              <li class="tool-chip"><span class="tool-name">GitHub</span><span class="tool-note">ソースの管理</span></li>
+            </ul>
+          </article>
+          <article class="tool-group reveal" style="--delay:0.16s">
+            <header class="tool-group-head">
+              <span class="tool-group-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><rect x="3.5" y="4.5" width="17" height="15" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 16.5l4.7-4.7 3.5 3.5 2.6-2.6 5.4 5.4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
+              <div>
+                <p class="tool-group-en">Illustrate</p>
+                <h3 class="tool-group-title">描く</h3>
+              </div>
+            </header>
+            <ul class="tool-list">
+              <li class="tool-chip"><span class="tool-name">ComfyUI</span><span class="tool-note">ローカル環境で画像生成</span></li>
+              <li class="tool-chip"><span class="tool-name">Animagine XL 4.0</span><span class="tool-note">イラスト向けのモデル</span></li>
+              <li class="tool-chip"><span class="tool-name">RTX 4070</span><span class="tool-note">生成に使うGPU</span></li>
+            </ul>
+          </article>
+          <article class="tool-group reveal" style="--delay:0.24s">
+            <header class="tool-group-head">
+              <span class="tool-group-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+              <div>
+                <p class="tool-group-en">Automate</p>
+                <h3 class="tool-group-title">任せる・自動化する</h3>
+              </div>
+            </header>
+            <ul class="tool-list">
+              <li class="tool-chip"><span class="tool-name">Cursor</span><span class="tool-note">AIと一緒にコードを書く</span></li>
+              <li class="tool-chip"><span class="tool-name">Google Apps Script</span><span class="tool-note">過去作の採用自動化ツール</span></li>
+              <li class="tool-chip"><span class="tool-name">Google Sheets</span><span class="tool-note">過去作の採用自動化ツール</span></li>
+            </ul>
+          </article>
+        </div>
+        <div class="profile-cta reveal">
+          <a href="./#works" class="btn btn-primary">
+            Works を見る
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="./#gallery" class="btn btn-outline">ギャラリーを見る</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <nav class="footer-nav" aria-label="フッター">
+      <a href="./">トップ</a>
+      <a href="./#works">Works</a>
+      <a href="about.html" aria-current="page">自己紹介</a>
+    </nav>
+    <p>© 2026 GENO / ジーノ</p>
+  </footer>
+
+  <script src="works-data.js" defer></script>
+  <script src="main.js" defer></script>
+</body>
+</html>

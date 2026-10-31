@@ -220,7 +220,7 @@
   });
 
   /* ---------- Nav highlight ---------- */
-  const sections = ["about", "works", "gallery", "contact"]
+  const sections = ["about", "works", "gallery"]
     .map((id) => document.getElementById(id))
     .filter(Boolean);
   const navLinks = document.querySelectorAll("[data-nav]");
@@ -235,8 +235,10 @@
       a.classList.toggle("is-active", a.getAttribute("data-nav") === current);
     });
   }
-  updateNav();
-  window.addEventListener("scroll", updateNav, { passive: true });
+  if (sections.length) {
+    updateNav();
+    window.addEventListener("scroll", updateNav, { passive: true });
+  }
 
   /* ---------- Hero + scroll reveal ---------- */
   const heroEls = document.querySelectorAll(".reveal-hero");
@@ -272,7 +274,7 @@
     const status = document.getElementById("works-filter-status");
     const catColor = {
       all: "var(--cyan)",
-      real: "var(--gold)",
+      ygo: "var(--gold)",
       orica: "var(--magenta)",
       game: "var(--cyan)",
       ai: "#b18cff",
@@ -341,7 +343,7 @@
       const keepInView = () => {
         const top = groupsWrap.getBoundingClientRect().top;
         const offset = filterTrack.getBoundingClientRect().bottom + 16;
-        if (top < 0) {
+        if (top < offset) {
           window.scrollTo({ top: window.scrollY + top - offset, behavior: "auto" });
         }
       };
@@ -365,6 +367,15 @@
       tab.addEventListener("click", () => selectTab(tab));
     });
 
+    function updateScrollHint() {
+      const scrollable = filterTrack.scrollWidth > filterTrack.clientWidth + 1;
+      filterTrack.classList.toggle("is-scrollable", scrollable);
+      filterTrack.classList.toggle("at-end", scrollable && filterTrack.scrollLeft + filterTrack.clientWidth >= filterTrack.scrollWidth - 2);
+    }
+    filterTrack.addEventListener("scroll", updateScrollHint, { passive: true });
+    window.addEventListener("resize", updateScrollHint);
+    updateScrollHint();
+
     const initial = tabs.find((t) => t.classList.contains("is-active")) || tabs[0];
     moveIndicator(initial, true);
     window.addEventListener("resize", () => {
@@ -377,13 +388,67 @@
     // Optional deep link: ?works=orica or #works-orica
     const params = new URLSearchParams(location.search);
     const fromHash = (location.hash.match(/^#works-(\w+)$/) || [])[1];
-    const wanted = params.get("works") || fromHash;
+    // 旧カテゴリー名（本物の遊戯王 = real）は「遊戯王 = ygo」へ読み替え
+    const legacy = { real: "ygo" };
+    let wanted = params.get("works") || fromHash;
+    if (wanted && legacy[wanted]) {
+      wanted = legacy[wanted];
+      if (params.get("works")) {
+        params.set("works", wanted);
+        history.replaceState(null, "", location.pathname + "?" + params.toString() + location.hash);
+      } else {
+        history.replaceState(null, "", location.pathname + location.search + "#works-" + wanted);
+      }
+    }
     const wantedTab = wanted && tabs.find((t) => t.dataset.filter === wanted);
     if (wantedTab) {
       current = "all";
       selectTab(wantedTab);
       moveIndicator(wantedTab, true);
     }
+  }
+
+  /* ---------- Updated dates + NEW badge (data: works-data.js) ---------- */
+  const worksData = window.GENO_WORKS;
+  if (worksData && worksData.works) {
+    const DAY = 86400000;
+    const todayJst = Math.floor((Date.now() + 9 * 3600000) / DAY);
+    const newDays = Number(worksData.newDays) || 0;
+    const badgeSvg =
+      '<svg class="new-badge" viewBox="0 0 58 22" width="58" height="22" role="img" aria-label="NEW">' +
+      '<defs><linearGradient id="nbg-ID" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff2d95"/><stop offset="1" stop-color="#f0c14b"/></linearGradient></defs>' +
+      '<rect x="0.75" y="0.75" width="56.5" height="20.5" rx="10.25" fill="rgba(255,45,149,0.14)" stroke="url(#nbg-ID)" stroke-width="1.5"/>' +
+      '<path class="new-badge-spark" d="M12 5.2l1.3 3.9 3.9 1.3-3.9 1.3L12 15.6l-1.3-3.9-3.9-1.3 3.9-1.3z" fill="#f0c14b"/>' +
+      '<text x="35" y="15" text-anchor="middle" font-size="10.5" font-weight="800" letter-spacing="1.2" fill="#ffe6f2" font-family="inherit">NEW</text>' +
+      "</svg>";
+    let badgeN = 0;
+
+    function metaFor(id) {
+      const w = worksData.works[id];
+      if (!w || !/^\d{4}-\d{2}-\d{2}$/.test(w.updated || "")) return null;
+      const [y, m, d] = w.updated.split("-").map(Number);
+      const day = Math.floor(Date.UTC(y, m - 1, d) / DAY);
+      const isNew = newDays > 0 && todayJst - day >= 0 && todayJst - day < newDays;
+      const el = document.createElement("p");
+      el.className = "work-meta";
+      el.innerHTML =
+        '<time datetime="' + w.updated + '"><span class="work-meta-label">更新日</span>' +
+        y + "." + String(m).padStart(2, "0") + "." + String(d).padStart(2, "0") + "</time>" +
+        (isNew ? badgeSvg.replace(/ID/g, String(++badgeN)) : "");
+      return el;
+    }
+
+    document.querySelectorAll("[data-work]").forEach((card) => {
+      const meta = metaFor(card.dataset.work);
+      if (!meta) return;
+      const title = card.querySelector(".work-title");
+      if (title) title.parentNode.insertBefore(meta, title);
+    });
+    document.querySelectorAll("[data-work-date]").forEach((slot) => {
+      const meta = metaFor(slot.dataset.workDate);
+      if (meta) slot.replaceWith(meta);
+      else slot.remove();
+    });
   }
 
   /* ---------- 3D tilt on featured cards ---------- */
@@ -466,6 +531,18 @@
       if (e.key === "ArrowLeft") showLightbox(lbIndex - 1);
       if (e.key === "ArrowRight") showLightbox(lbIndex + 1);
     });
+
+    // Swipe left / right on touch screens
+    let touchX = null;
+    lightbox.addEventListener("touchstart", (e) => {
+      touchX = e.touches.length === 1 ? e.touches[0].clientX : null;
+    }, { passive: true });
+    lightbox.addEventListener("touchend", (e) => {
+      if (touchX === null) return;
+      const dx = e.changedTouches[0].clientX - touchX;
+      touchX = null;
+      if (Math.abs(dx) > 50) showLightbox(lbIndex + (dx < 0 ? 1 : -1));
+    }, { passive: true });
 
     // Focus trap
     lightbox.addEventListener("keydown", (e) => {
