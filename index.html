@@ -3,25 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GENO / ジーノ — Portfolio</title>
-  <meta name="description" content="採用・営業チームをリードしながら、テクノロジーとクリエイティブで面白いものを作り続ける GENO / ジーノのポートフォリオ。">
+  <title>GENO / ジーノ — Webアプリ・ゲーム・AIイラストのポートフォリオ</title>
+  <meta name="description" content="ジーノ（GENO）のポートフォリオ。遊戯王カードやオリカを使ったWebアプリ、ブラウザで遊べるゲーム、ComfyUIで生成したAIイラストをまとめています。">
   <meta name="theme-color" content="#060814">
-  <meta property="og:title" content="GENO / ジーノ — Portfolio">
-  <meta property="og:description" content="Recruitment × Tech × Creative。採用・テクノロジー・クリエイティブで面白いものを作り続けるポートフォリオ。">
+  <link rel="canonical" href="https://geno-portfolio-site.vercel.app/">
+  <meta property="og:site_name" content="GENO / ジーノ">
+  <meta property="og:title" content="GENO / ジーノ — Webアプリ・ゲーム・AIイラスト">
+  <meta property="og:description" content="遊戯王カードやオリカのWebアプリ、ブラウザゲーム、AIイラストをまとめたジーノのポートフォリオ。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://geno-portfolio-site.vercel.app/">
-  <meta property="og:image" content="https://geno-portfolio-site.vercel.app/assets/img/hoshiame-desktop.webp">
+  <meta property="og:image" content="https://geno-portfolio-site.vercel.app/assets/og/og-home.png">
   <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="750">
-  <meta property="og:image:alt" content="ほしあめ夜市 — デスクトップ画面のスクリーンショット">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="GENO / ジーノ ポートフォリオ — 夜空とネオンのタイトル画像">
   <meta property="og:locale" content="ja_JP">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="canonical" href="https://geno-portfolio-site.vercel.app/">
+  <meta name="twitter:title" content="GENO / ジーノ — Webアプリ・ゲーム・AIイラスト">
+  <meta name="twitter:description" content="遊戯王カードやオリカのWebアプリ、ブラウザゲーム、AIイラストをまとめたジーノのポートフォリオ。">
+  <meta name="twitter:image" content="https://geno-portfolio-site.vercel.app/assets/og/og-home.png">
+  <meta name="twitter:image:alt" content="GENO / ジーノ ポートフォリオ — 夜空とネオンのタイトル画像">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300..900&display=swap">
   <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://geno-portfolio-site.vercel.app/#website",
+        "url": "https://geno-portfolio-site.vercel.app/",
+        "name": "GENO / ジーノ — Portfolio",
+        "inLanguage": "ja",
+        "author": { "@id": "https://geno-portfolio-site.vercel.app/#person" }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://geno-portfolio-site.vercel.app/#person",
+        "name": "ジーノ",
+        "alternateName": "GENO",
+        "url": "https://geno-portfolio-site.vercel.app/about.html",
+        "description": "Webアプリ、ブラウザゲーム、AIイラストを作っているクリエイター。"
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">メインコンテンツへ</a>
@@ -50,7 +81,7 @@
         <li><a href="#about" data-nav="about">About</a></li>
         <li><a href="#works" data-nav="works">Works</a></li>
         <li><a href="#gallery" data-nav="gallery">Gallery</a></li>
-        <li><a href="#contact" data-nav="contact">Contact</a></li>
+        <li><a href="about.html" data-nav="profile">Profile</a></li>
       </ul>
     </nav>
 
@@ -69,7 +100,7 @@
       <li><a href="#about" data-nav="about">About</a></li>
       <li><a href="#works" data-nav="works">Works</a></li>
       <li><a href="#gallery" data-nav="gallery">Gallery</a></li>
-      <li><a href="#contact" data-nav="contact">Contact</a></li>
+      <li><a href="about.html" data-nav="profile">Profile</a></li>
     </ul>
   </nav>
 
@@ -91,7 +122,7 @@
             Works を見る
             <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <a href="#contact" class="btn btn-outline">連絡する</a>
+          <a href="about.html" class="btn btn-outline">自己紹介を見る</a>
         </div>
       </div>
 
@@ -149,6 +180,7 @@
               <p>プライベートでは Apex Legends・Yu-Gi-Oh! Master Duel・Balatro などゲームに熱中しつつ、パチスロ攻略サイトやアニメーションなど、コードを使ったクリエイティブ制作も行っています。</p>
               <p>技術と人と物語を繋ぐことが好きです。</p>
             </div>
+            <a href="about.html" class="text-link">くわしい自己紹介と使っている道具を見る<svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M5 10h10M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
             <ul class="skills-list" aria-label="スキル">
               <li class="skill-chip">
                 <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><circle cx="8" cy="5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M3 13c.8-2.5 2.5-3.5 5-3.5s4.2 1 5 3.5" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
@@ -230,38 +262,38 @@
         <header class="section-header reveal">
           <p class="section-tag">Works</p>
           <h2>制作物</h2>
-          <p class="section-lead">本物の遊戯王カードを使ったWebアプリ、オリカのWebアプリ、ブラウザゲーム、AIイラスト、アーカイブの実験作まで。カテゴリーごとに見られます。</p>
+          <p class="section-lead">遊戯王カードを使ったWebアプリ、オリカのWebアプリ、ブラウザゲーム、AIイラスト、アーカイブの実験作まで。カテゴリーごとに見られます。</p>
         </header>
 
         <!-- Category filter -->
         <div class="works-filter reveal" role="group" aria-label="カテゴリーで絞り込み">
           <div class="works-filter-track" id="works-filter">
             <span class="works-filter-indicator" aria-hidden="true"></span>
-            <button type="button" class="filter-tab is-active" data-filter="all" aria-pressed="true" aria-controls="works-groups">すべて<span class="filter-count">13</span></button>
-            <button type="button" class="filter-tab" data-filter="real" data-cat="real" aria-pressed="false" aria-controls="works-groups">本物の遊戯王<span class="filter-count">2</span></button>
+            <button type="button" class="filter-tab is-active" data-filter="all" aria-pressed="true" aria-controls="works-groups">すべて<span class="filter-count">12</span></button>
+            <button type="button" class="filter-tab" data-filter="ygo" data-cat="ygo" aria-pressed="false" aria-controls="works-groups">遊戯王<span class="filter-count">2</span></button>
             <button type="button" class="filter-tab" data-filter="orica" data-cat="orica" aria-pressed="false" aria-controls="works-groups">オリカ<span class="filter-count">2</span></button>
             <button type="button" class="filter-tab" data-filter="game" data-cat="game" aria-pressed="false" aria-controls="works-groups">ゲーム<span class="filter-count">2</span></button>
-            <button type="button" class="filter-tab" data-filter="ai" data-cat="ai" aria-pressed="false" aria-controls="works-groups">AIイラスト<span class="filter-count">2</span></button>
+            <button type="button" class="filter-tab" data-filter="ai" data-cat="ai" aria-pressed="false" aria-controls="works-groups">AIイラスト<span class="filter-count">1</span></button>
             <button type="button" class="filter-tab" data-filter="archive" data-cat="archive" aria-pressed="false" aria-controls="works-groups">アーカイブ<span class="filter-count">5</span></button>
           </div>
         </div>
         <p class="works-filter-status visually-hidden" id="works-filter-status" aria-live="polite"></p>
 
         <div class="works-groups" id="works-groups">
-          <!-- 本物の遊戯王 -->
-          <section class="work-group" data-cat="real" aria-labelledby="cat-real">
+          <!-- 遊戯王 -->
+          <section class="work-group" data-cat="ygo" aria-labelledby="cat-ygo">
             <header class="work-group-head reveal">
               <span class="work-group-icon"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><rect x="7.5" y="3.5" width="11" height="15" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.4" transform="rotate(8 13 11)"/><rect x="4.5" y="5" width="11" height="15" rx="1.6" fill="var(--bg-card-solid)" stroke="currentColor" stroke-width="1.5"/><rect x="6.6" y="7.2" width="6.8" height="5.6" rx=".6" fill="none" stroke="currentColor" stroke-width="1.1"/><path d="M6.8 15h6.4M6.8 17.2h4.2" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg></span>
               <div class="work-group-text">
-                <p class="work-group-en">Real Yu-Gi-Oh!</p>
-                <h3 class="work-group-title" id="cat-real">本物の遊戯王</h3>
+                <p class="work-group-en">Yu-Gi-Oh!</p>
+                <h3 class="work-group-title" id="cat-ygo">遊戯王</h3>
                 <p class="work-group-note">実在の遊戯王カードのデータ・画像を使った、非公式ファンメイドのWebアプリ。</p>
               </div>
               <p class="work-group-count"><span>2</span> works</p>
             </header>
             <div class="featured-grid">
             <!-- パック開封（いちばんのお気に入り） -->
-            <article class="featured-card reveal tilt-card">
+            <article data-work="orica-pack" class="featured-card reveal tilt-card">
               <div class="featured-media mockup-stack">
                 <img
                   class="mockup-desktop"
@@ -302,7 +334,7 @@
               </div>
             </article>
             <!-- 本物カードで9枚 -->
-            <article class="featured-card reveal tilt-card" style="--delay:0.1s">
+            <article data-work="orica-real9" class="featured-card reveal tilt-card" style="--delay:0.1s">
               <div class="featured-media mockup-stack">
                 <img
                   class="mockup-desktop"
@@ -359,7 +391,7 @@
             </header>
             <div class="featured-grid">
             <!-- オリカメーカー -->
-            <article class="featured-card reveal tilt-card">
+            <article data-work="orica-maker" class="featured-card reveal tilt-card">
               <div class="featured-media mockup-stack">
                 <img
                   class="mockup-desktop"
@@ -404,7 +436,7 @@
               </div>
             </article>
             <!-- 私を構成する9枚（オリカ） -->
-            <article class="featured-card reveal tilt-card" style="--delay:0.1s">
+            <article data-work="orica-9" class="featured-card reveal tilt-card" style="--delay:0.1s">
               <div class="featured-media mockup-stack">
                 <img
                   class="mockup-desktop"
@@ -459,7 +491,7 @@
             </header>
             <div class="featured-grid">
             <!-- ほしあめ夜市 -->
-            <article class="featured-card reveal tilt-card">
+            <article data-work="hoshiame" class="featured-card reveal tilt-card">
               <div class="featured-media mockup-stack">
                 <img
                   class="mockup-desktop"
@@ -504,7 +536,7 @@
               </div>
             </article>
             <!-- ねこねこネオン迷路 -->
-            <article class="featured-card reveal tilt-card" style="--delay:0.1s">
+            <article data-work="maze" class="featured-card reveal tilt-card" style="--delay:0.1s">
               <div class="featured-media mockup-stack">
                 <img
                   class="mockup-desktop"
@@ -558,13 +590,13 @@
               <div class="work-group-text">
                 <p class="work-group-en">AI Illustration</p>
                 <h3 class="work-group-title" id="cat-ai">AIイラスト</h3>
-                <p class="work-group-note">ローカル環境のComfyUIで生成したイラストと、制作まわりのツール。</p>
+                <p class="work-group-note">ローカル環境のComfyUIで生成したイラスト。</p>
               </div>
-              <p class="work-group-count"><span>2</span> works</p>
+              <p class="work-group-count"><span>1</span> work</p>
             </header>
             <div class="featured-grid">
             <!-- AIイラスト ギャラリー（Featured カードとして紹介、実ギャラリーは下） -->
-            <article class="featured-card featured-card--gallery reveal tilt-card">
+            <article data-work="ai-gallery" class="featured-card featured-card--gallery reveal tilt-card">
               <div class="featured-media gallery-preview">
                 <img src="assets/img/ai-01.webp" width="640" height="935" alt="AIイラスト作品1のプレビュー" loading="lazy" decoding="async">
                 <img src="assets/img/ai-02.webp" width="640" height="935" alt="AIイラスト作品2のプレビュー" loading="lazy" decoding="async">
@@ -583,51 +615,6 @@
                   <a href="#gallery" class="btn btn-primary btn-sm">
                     <svg viewBox="0 0 20 20" width="14" height="14" aria-hidden="true"><path d="M4 14l4-4 3 3 5-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><rect x="3" y="3" width="14" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
                     ギャラリーへ
-                  </a>
-                </div>
-              </div>
-            </article>
-            <!-- AIイラスト プロンプト帳 -->
-            <article class="featured-card reveal tilt-card" style="--delay:0.1s">
-              <div class="featured-media mockup-stack">
-                <img
-                  class="mockup-desktop"
-                  src="assets/img/prompt-desktop.webp"
-                  width="1200"
-                  height="750"
-                  alt="AIイラスト プロンプト帳 — デスクトップ画面のスクリーンショット"
-                  loading="lazy"
-                  decoding="async"
-                >
-                <img
-                  class="mockup-mobile"
-                  src="assets/img/prompt-mobile.webp"
-                  width="420"
-                  height="909"
-                  alt="AIイラスト プロンプト帳 — スマートフォン画面のスクリーンショット"
-                  loading="lazy"
-                  decoding="async"
-                >
-                <div class="featured-shine" aria-hidden="true"></div>
-              </div>
-              <div class="featured-body">
-                <p class="work-badge">Featured</p>
-                <h3 class="work-title">AIイラスト プロンプト帳</h3>
-                <p class="work-desc">ComfyUI / Animagine XL 4.0向けのプロンプト管理PWA。タグをタップして組み立て、ワンタップでコピー、オフライン対応。</p>
-                <ul class="work-tags">
-                  <li>PWA</li>
-                  <li>IndexedDB</li>
-                  <li>JavaScript</li>
-                  <li>オフライン対応</li>
-                </ul>
-                <div class="work-links">
-                  <a href="https://prompt-notebook-five.vercel.app/" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
-                    <svg viewBox="0 0 20 20" width="14" height="14" aria-hidden="true"><path d="M11 3h6v6M17 3l-8 8M14 12v4a1 1 0 01-1 1H4a1 1 0 01-1-1V7a1 1 0 011-1h4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    Open
-                  </a>
-                  <a href="https://github.com/Geeeeeeno/prompt-notebook" target="_blank" rel="noopener" class="btn btn-outline btn-sm">
-                    <svg viewBox="0 0 20 20" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M10 2C5.58 2 2 5.58 2 10c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82A7.65 7.65 0 0110 5.8c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.19 0 .21.15.46.55.38A8.01 8.01 0 0018 10c0-4.42-3.58-8-8-8z"/></svg>
-                    Code
                   </a>
                 </div>
               </div>
@@ -712,41 +699,14 @@
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="section contact">
-      <div class="section-inner">
-        <header class="section-header reveal">
-          <p class="section-tag">Contact</p>
-          <h2>お問い合わせ</h2>
-          <p class="section-lead">お仕事・コラボレーション・雑談、なんでも歓迎です。SNSからどうぞ。</p>
-        </header>
-        <div class="contact-links reveal">
-          <a href="https://x.com/Genogeno_rex" target="_blank" rel="noopener" class="sns-link">
-            <span class="sns-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            </span>
-            <span class="sns-text">
-              <span class="sns-name">X (Twitter)</span>
-              <span class="sns-handle">@Genogeno_rex</span>
-            </span>
-            <svg class="sns-arrow" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M5 10h10M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <a href="https://github.com/Geeeeeeno" target="_blank" rel="noopener" class="sns-link">
-            <span class="sns-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.09.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
-            </span>
-            <span class="sns-text">
-              <span class="sns-name">GitHub</span>
-              <span class="sns-handle">Geeeeeeno</span>
-            </span>
-            <svg class="sns-arrow" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M5 10h10M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-        </div>
-      </div>
-    </section>
   </main>
 
   <footer class="site-footer">
+    <nav class="footer-nav" aria-label="フッター">
+      <a href="#works">Works</a>
+      <a href="#gallery">Gallery</a>
+      <a href="about.html">自己紹介</a>
+    </nav>
     <p>© 2026 GENO / ジーノ</p>
   </footer>
 
@@ -768,6 +728,7 @@
     </button>
   </div>
 
+  <script src="works-data.js" defer></script>
   <script src="main.js" defer></script>
 </body>
 </html>
