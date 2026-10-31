@@ -16,7 +16,7 @@
 - `works-data.js` — 作品の更新日と「NEW」表示の日数。日付はここだけ直せば両ページに反映
 - `style.css` — スタイル
 - `main.js` — アニメーション・ナビ・カテゴリー絞り込み・更新日表示・ライトボックス
-- `sitemap.xml` / `robots.txt` — 検索エンジン向け（メインの Vercel URL）
+- `sitemap.xml` / `robots.txt` — 検索エンジン向け（メインの Cloudflare Pages URL）
 - `assets/` — 画像・favicon・apple-touch-icon・OGP画像（`assets/og/`）。Works のサムネイルは `assets/img/*-desktop.webp` / `*-mobile.webp`
 
 Works の絞り込みは `?works=ygo|orica|game|ai|archive` で直接開けます（旧 `?works=real` は `ygo` に読み替え）。
