@@ -4,8 +4,8 @@
 
 ## 公開URL
 
-- メイン: https://geno-portfolio-site.vercel.app/ （Vercel）
-- ミラー: https://geeeeeeno.github.io/geno-portfolio/ （GitHub Pages）、https://geno-portfolio.pages.dev/ （Cloudflare Pages）
+- メイン: https://geno-portfolio.pages.dev/ （Cloudflare Pages）
+- 旧URL（停止は未定）: https://geno-portfolio-site.vercel.app/ （Vercel）、https://geeeeeeno.github.io/geno-portfolio/ （GitHub Pages）
 
 ## 構成
 
